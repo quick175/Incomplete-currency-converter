@@ -1,3 +1,4 @@
+#errors here and there.don't use this garbage
 #currency values done-ETB,SAR,IDR,PHP,usd,gbp
 #varblud if b2s var sigma if s2b
 print("Hello and welcome to the Currency Exchange program!")
