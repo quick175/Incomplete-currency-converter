@@ -1,0 +1,47 @@
+import time
+
+usd = [1, 3.75, 1.44, 0.77]  # usd sar cad gbp order through all
+sar = [0.27, 1, 0.38, 0.21]
+cad = [0.70, 2.61, 1, 0.54]
+gbp = [1.29, 4.85, 1.86, 1]
+
+currencies = ["USD", "SAR", "CAD", "GBP"]
+currency_lists = [usd, sar, cad, gbp]  # list of lists
+
+userValue = float(input("How much would you like to spend? ===>  "))
+print("Here is a list of currencies: ", currencies)
+currency2convert = input("Choose a currency to start with  ==> ").upper()
+currencyConverted = input("Choose another currency ==> ").upper()
+output = 0
+
+if currency2convert in currencies:
+	x = currencies.index(currency2convert)  # assigns the index of chosen currency to x
+	y = currencies.index(currencyConverted)
+else:
+	print("get out")
+	exit()
+
+def loading():
+	symbols = ['-', '/', '|', '\\']
+	start_time = time.time()
+	i = 0
+	while time.time() - start_time < 2:
+		i = (i + 1) % len(symbols)
+		print('\r\033[K%s Calculating...' % symbols[i], flush=True, end='')
+		time.sleep(0.1)
+	print('\r\033[K', end='')
+	return
+
+
+def conversion(myList, myList2, value, index1, index2):
+	result = value * myList[index1][index2]
+	loading()
+	print(result)
+	return
+
+
+def main():
+	conversion(currency_lists, currency_lists[x], userValue, x, y)  # call func
+
+
+main()
